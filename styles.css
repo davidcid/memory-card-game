@@ -8,12 +8,16 @@ body {
 	height: 100vh;
 	display: flex;
 	background: #060AB2;
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
 }
 
 .memory-game {
 	width: 640px;
 	height: 640px;
-	margin: auto;
+	margin: auto 50px;
 	display: flex;
 	flex-wrap: wrap;
 	perspective: 1000px;
@@ -51,4 +55,19 @@ body {
 
 .front-face {
 	transform: rotateY(180deg);
+}
+
+.score-box {
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+	padding: 30px;
+	background: #adcfeb;
+	text-transform: uppercase;
+	margin-right: 5%;
+	border-radius: 8px;
+}
+
+.movements {
+	font-size: 4em;
+	font-weight: bold;
 }

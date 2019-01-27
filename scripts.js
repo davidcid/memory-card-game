@@ -1,8 +1,10 @@
 const cards = document.querySelectorAll('.memory-card');
+const movementsText = document.querySelector('.movements');
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+let movements = 0;
 
 function flipCard() {
 	if(lockBoard) return;
@@ -30,6 +32,9 @@ function checkForMatch() {
 	secondCard.dataset.framework;
 
 	isMatch ? disbleCards() : unflipCards();
+	movements++;
+	console.log(movements);
+	updateMovements();
 }
 
 function disbleCards() {
@@ -53,6 +58,10 @@ function unflipCards() {
 function resetBoard() {
 	[hasFlippedCard, lockBoard] = [false, false];
 	[firstCard, secondCard] = [null, null];
+}
+
+function updateMovements() {
+	movementsText.innerHTML = movements;
 }
 
 (function shuffle() {
