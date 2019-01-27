@@ -38,6 +38,11 @@ body {
 	transition: transform .2s;
 }
 
+.memory-card:hover {
+	transform: scale(1.03);
+	transition: transform 0.3s;
+}
+
 .memory-card.flip {
 	transform: rotateY(180deg);
 }
@@ -60,14 +65,30 @@ body {
 .score-box {
 	font-family: 'Lato', sans-serif;
 	text-align: center;
-	padding: 30px;
-	background: #adcfeb;
 	text-transform: uppercase;
 	margin-right: 5%;
-	border-radius: 8px;
+}
+
+.movements-box {
+	background: #adcfeb;
+	border-radius: 5px;
+	padding: 30px;
 }
 
 .movements {
 	font-size: 4em;
 	font-weight: bold;
+}
+
+.score-box button {
+	margin-top: 15px;
+	background: #adcfeb;
+	border-radius: 5px;
+	padding: 15px 5px;
+	width: 100%;
+	border: none;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px;
+	font-size: 1em;
+
 }

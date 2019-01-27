@@ -1,5 +1,6 @@
 const cards = document.querySelectorAll('.memory-card');
 const movementsText = document.querySelector('.movements');
+const button = document.querySelector('#new-game');
 
 let hasFlippedCard = false;
 let lockBoard = false;
@@ -72,3 +73,12 @@ function updateMovements() {
 })();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+function newGame() {
+	cards.forEach(card => card.classList.remove('flip'));
+	movements = 0;
+	shuffle();
+	cards.forEach(card => card.addEventListener('click', flipCard));
+	updateMovements();
+	resetBoard();
+};
