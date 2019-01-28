@@ -7,6 +7,17 @@ let lockBoard = false;
 let firstCard, secondCard;
 let movements = 0;
 
+function newGame() {
+	if(lockBoard) return;
+	cards.forEach(card => card.classList.remove('flip'));
+	movements = 0;
+	cards.forEach(card => card.addEventListener('click', flipCard));
+	updateMovements();
+	resetBoard();
+	shuffle();
+}
+
+
 function flipCard() {
 	if(lockBoard) return;
 	if (this === firstCard) return;
@@ -32,13 +43,12 @@ function checkForMatch() {
 	let isMatch = firstCard.dataset.framework ===
 	secondCard.dataset.framework;
 
-	isMatch ? disbleCards() : unflipCards();
+	isMatch ? disableCards() : unflipCards();
 	movements++;
-	console.log(movements);
 	updateMovements();
 }
 
-function disbleCards() {
+function disableCards() {
 	firstCard.removeEventListener('click', flipCard);
 	secondCard.removeEventListener('click', flipCard);
 }
@@ -49,11 +59,9 @@ function unflipCards() {
 	setTimeout(() => {
 		firstCard.classList.remove('flip');
 		secondCard.classList.remove('flip');
-
+		lockBoard = false;
 		resetBoard();
 	}, 1500);
-
-	lockBoard = false;
 }
 
 function resetBoard() {
@@ -65,20 +73,11 @@ function updateMovements() {
 	movementsText.innerHTML = movements;
 }
 
-(function shuffle() {
+function shuffle() {
 	cards.forEach(card => {
 		let randomPos = Math.floor(Math.random() * 12);
 		card.style.order = randomPos;
 	})
-})();
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-
-function newGame() {
-	cards.forEach(card => card.classList.remove('flip'));
-	movements = 0;
-	shuffle();
-	cards.forEach(card => card.addEventListener('click', flipCard));
-	updateMovements();
-	resetBoard();
 };
+
+newGame();
