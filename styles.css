@@ -16,7 +16,7 @@ body {
 
 .memory-game {
 	width: 640px;
-	height: 640px;
+	height: 500px;
 	margin: auto 50px;
 	display: flex;
 	flex-wrap: wrap;
@@ -84,13 +84,14 @@ body {
 
 .score-box button {
 	margin-top: 15px;
-	background: #adcfeb;
+	background: #c5122a;
+	color: white;
 	border-radius: 5px;
 	padding: 15px 5px;
 	width: 100%;
 	border: none;
 	cursor: pointer;
-	box-shadow: 2px 2px 2px;
+	box-shadow: 2px 2px 2px #333;
 	font-size: 1em;
 }
 
