@@ -69,10 +69,12 @@ body {
 	margin-right: 5%;
 }
 
-.movements-box {
+.movements-box,
+.hi-score-box {
 	background: #adcfeb;
 	border-radius: 5px;
 	padding: 30px;
+	margin: 15px 0;
 }
 
 .movements {

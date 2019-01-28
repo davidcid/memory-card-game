@@ -1,11 +1,14 @@
 const cards = document.querySelectorAll('.memory-card');
 const movementsText = document.querySelector('.movements');
 const button = document.querySelector('#new-game');
+const hiScoreText = document.querySelector('.hi-score');
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 let movements = 0;
+let hiScore = 1000;
+let matches = 0;
 
 function newGame() {
 	if(lockBoard) return;
@@ -15,6 +18,7 @@ function newGame() {
 	updateMovements();
 	resetBoard();
 	shuffle();
+	matches = 0;
 }
 
 
@@ -46,11 +50,13 @@ function checkForMatch() {
 	isMatch ? disableCards() : unflipCards();
 	movements++;
 	updateMovements();
+	checkHiScore();
 }
 
 function disableCards() {
 	firstCard.removeEventListener('click', flipCard);
 	secondCard.removeEventListener('click', flipCard);
+	matches ++;
 }
 
 function unflipCards() {
@@ -79,5 +85,14 @@ function shuffle() {
 		card.style.order = randomPos;
 	})
 };
+
+function checkHiScore() {
+	if (matches === cards.length / 2) {
+		if (movements < hiScore) {
+			hiScore = movements;
+			hiScoreText.innerHTML = movements;
+		}
+	}
+}
 
 newGame();
